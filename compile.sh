@@ -1,1 +1,1 @@
-make main.c
+cc main.c
