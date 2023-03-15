@@ -6,5 +6,15 @@ pipeline {
                 echo 'Hello from github' 
             }
         }
+        stage('Vérification') {
+            steps {
+                echo "Vérif stage"
+            }
+        }
+        stage('Deploy') {
+    steps {
+        echo "Deploy stage"
+    }
+}  
     }
 }
