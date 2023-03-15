@@ -1,1 +1,1 @@
-make main.py
+make main.c
