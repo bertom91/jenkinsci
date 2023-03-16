@@ -1,28 +1,28 @@
 pipeline {
     agent any 
         stages {
-                stage('Test') {
-                    steps {
-                        echo "testing stage..."
-                        sleep 10
+            stage('Test') {
+                steps {
+                    echo "testing stage..."
+                    sleep 10
             }
         }
-                stage('Deploy') {
-                parallel { 
-                        stage('tache1') {
-                            steps {
-                                echo "message 1"
-                                sleep 10
-                          }
+            stage('Deploy') {
+            parallel { 
+                stage('tache1') {
+                    steps {
+                        echo "message 1"
+                        sleep 10
                       }
-                        stage('tache2') {
-                            steps {
-                                echo "message 2"
-                          }    
-                    }
+                  }
+                stage('tache2') {
+                    steps {
+                        echo "message 2"
+                      }    
                 }
-                steps {
-                    echo "Deploying..."
+            }
+            steps {
+                echo "Deploying..."
                 }
             }
         }
