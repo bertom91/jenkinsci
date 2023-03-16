@@ -5,7 +5,7 @@ pipeline {
             steps {
                 echo "etape1"
                 sh 'make main'
-                sh 'main main-${BUILD_NUMBER}'
+                echo "${BUILD_NUMBER}"
             }
           }
         }
