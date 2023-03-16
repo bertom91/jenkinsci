@@ -1,19 +1,11 @@
 pipeline {
     agent any 
             stages {
-                stage('Stage 1') {
+                stage('Build') {
                     steps {
-                        echo 'Hello from github' 
-                    }
-                }
-                stage('Vérification') {
-                    steps {
-                        echo "Vérif stage"
-                    }
-                }
-                stage('Deploy') {
-                    steps {
-                        echo "Deploy stage"
+                        echo "build stage..."
+                        sh 'make'
+                        
             }
         }  
     }
