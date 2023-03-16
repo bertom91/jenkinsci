@@ -1,40 +1,41 @@
 pipeline {
     agent any 
-            stages {
-                stage('Construction') {
-                    stages {
-                        stage('Build') {
-                            steps {
-                                echo "build stage init..."
-                                sh 'make main'
-                                sh 'ls'
-                                archiveArtifacts artifacts: 'main', fingerprint: true
+                stages {
+                    stage('Construction') {
+                        stages {
+                            stage('Build') {
+                                steps {
+                                    echo "build stage init..."
+                                    sh 'make main'
+                                    sh 'ls'
+                                    archiveArtifacts artifacts: 'main', fingerprint: true
+                        }
                     }
-                }
-                                stage('Build2') {
+                            stage('Build2') {
                                 when {
                                     changelog '.* production *.'
                                 }
                                 steps {
                                     echo "build stage final..."
                                     sh 'strip main'
+                        }
                     }
                 }
+                    stage('Test') {
+                        steps {
+                            echo "testing stage..."
+                            sh 'ls'
+                            /* junit '*.xml' */
+                }
             }
-                stage('Test') {
-                    steps {
-                        echo "testing stage..."
-                        sh 'ls'
-                        /* junit '*.xml' */
-            }
-        }
-                stage('Deploy') {
-                    when { 
-                    changelog '.* deploy .*' 
-                    }
-                    steps {
-                        echo "Deploying..."
-                        
+                    stage('Deploy') {
+                        when { 
+                        changelog '.* deploy .*' 
+                        }
+                        steps {
+                            echo "Deploying..."
+
+                }
             }
         }
     }
