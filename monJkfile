@@ -1,40 +1,40 @@
 pipeline {
     agent any 
-                stages {
-                    stage('Construction') {
-                        stages {
-                            stage('Build') {
-                                steps {
-                                    echo "build stage init..."
-                                    sh 'make main'
-                                    sh 'ls'
-                                    archiveArtifacts artifacts: 'main', fingerprint: true
-                        }
-                    }
-                            stage('Build2') {
-                                when {
-                                    changelog '.* production *.'
-                                }
-                                steps {
-                                    echo "build stage final..."
-                                    sh 'strip main'
-                        }
+            stages {
+                stage('construction') {
+                
+                    stages {
+                        stage('construction1') {
+                            steps {
+                                echo "build stage init..."
+                                sh 'make main'
+                                sh 'ls'
+                                archiveArtifacts artifacts: 'main', fingerprint: true
                     }
                 }
-                    stage('Test') {
-                        steps {
-                            echo "testing stage..."
-                            sh 'ls'
-                            /* junit '*.xml' */
+                        stage('construction2') {
+                            when {
+                                changelog '.* production *.'
+                            }
+                            steps {
+                                echo "build stage final..."
+                                sh 'strip main'
+                    }
                 }
             }
-                    stage('Deploy') {
-                        when { 
-                        changelog '.* deploy .*' 
-                        }
-                        steps {
-                            echo "Deploying..."
-
+                stage('Test') {
+                    steps {
+                        echo "testing stage..."
+                        sh 'ls'
+                        /* junit '*.xml' */
+            }
+        }
+                stage('Deploy') {
+                    when { 
+                    changelog '.* deploy .*' 
+                    }
+                    steps {
+                        echo "Deploying..."
                 }
             }
         }
