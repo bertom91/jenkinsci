@@ -1,12 +1,23 @@
 pipeline {
     agent any 
             stages {
-                stage('Build') {
-                    steps {
-                        echo "build stage..."
-                        sh 'make main'
-                        sh 'ls'
-                        archiveArtifacts artifacts: 'main', fingerprint: true
+                stage('Construction') {
+                    stage('Build') {
+                        steps {
+                            echo "build stage init..."
+                            sh 'make main'
+                            sh 'ls'
+                            archiveArtifacts artifacts: 'main', fingerprint: true
+                }
+            }
+                            stage('Build2') {
+                            when {
+                                changelog '.* production *.'
+                            }
+                        steps {
+                            echo "build stage final..."
+                            sh 'strip main'
+                }
             }
         }
                 stage('Test') {
@@ -27,5 +38,3 @@ pipeline {
         }
     }
 }
-
-
