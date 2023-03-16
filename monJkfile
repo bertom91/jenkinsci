@@ -5,8 +5,8 @@ pipeline {
                 steps {
                     echo "testing stage..."
                     sleep 10
+                }
             }
-        }
             stage('Deploy') {
             parallel { 
                 stage('tache1') {
@@ -18,7 +18,7 @@ pipeline {
                 stage('tache2') {
                     steps {
                         echo "message 2"
-                      }    
+                    }    
                 }
             }
             steps {
