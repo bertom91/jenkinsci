@@ -4,7 +4,17 @@ pipeline {
           stage('Build') {
             steps {
                 echo "etape1"
-                sh 'make main'
+                sh 'tree /tmp'
+                echo "${env.BUILD_NUMBER}"
+            }
+          }
+          stage('Envtest') {
+            environment {
+                LANG= 'C'
+            }
+            steps {
+                echo "test with env C"
+                sh 'tree /tmp'
                 echo "${env.BUILD_NUMBER}"
             }
           }
