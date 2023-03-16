@@ -8,7 +8,7 @@ pipeline {
             }
         }
                 stage('Deploy') {
-                    parallel { 
+                parallel { 
                         stage('tache1') {
                             steps {
                                 echo "message 1"
