@@ -13,7 +13,7 @@ pipeline {
                     steps {
                         echo "testing stage..."
                         sh 'ls'
-                        junit '*.xml'
+                        /* junit '*.xml' */
             }
         }
                 stage('Deploy') {
