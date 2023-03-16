@@ -20,10 +20,10 @@ pipeline {
                                 echo "message 2"
                           }    
                     }
-                    steps {
-                        echo "Deploying..."
+                }
+                steps {
+                    echo "Deploying..."
                 }
             }
         }
     }
-}
