@@ -1,20 +1,20 @@
 pipeline {
     agent any 
-    stages {
-        stage('Stage 1') {
+            stages {
+                stage('Stage 1') {
+                    steps {
+                        echo 'Hello from github' 
+                    }
+                }
+                stage('Vérification') {
+                    steps {
+                        echo "Vérif stage"
+                    }
+                }
+                stage('Deploy') {
             steps {
-                echo 'Hello from github' 
+                echo "Deploy stage"
             }
-        }
-        stage('Vérification') {
-            steps {
-                echo "Vérif stage"
-            }
-        }
-        stage('Deploy') {
-    steps {
-        echo "Deploy stage"
-    }
-}  
+        }  
     }
 }
