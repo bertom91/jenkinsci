@@ -1,9 +1,17 @@
 pipeline {
-    agent {label 'production'}
+    agent any
     stages {
-      stage('frontend') {
+      stage('Build') {
+        agent {label 'node2'}
         steps {
-            echo "Coucou"
+            echo "Build"
+            sh 'sleep 10'
+        }
+      }
+      stage('Deploy') {
+        agent {label 'production'}
+        steps {
+            echo "Deploy"
             sh 'sleep 10'
         }
       }
