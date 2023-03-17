@@ -1,23 +1,11 @@
 pipeline {
-    agent any 
-        stages {
-          stage('Build') {
-            steps {
-                echo "etape1"
-                sh 'tree /tmp'
-                echo "${env.BUILD_NUMBER}"
-            }
-          }
-          stage('Envtest') {
-            environment {
-                LANG= 'C'
-            }
-            steps {
-                echo "test with env C"
-                sh 'tree /tmp'
-                echo "${env.BUILD_NUMBER}"
-            }
-          }
+    agent { label 'node2' }
+    stages {
+      stage('frontend') {
+        steps {
+            echo "Coucou"
+            sh 'sleep 10'
         }
       }
-
+   }
+}  
